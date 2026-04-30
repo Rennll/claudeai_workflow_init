@@ -1,0 +1,2 @@
+# claudeai_workflow_init
+用在claude.ai網頁版的開發，提供給第一個session的基本資訊
