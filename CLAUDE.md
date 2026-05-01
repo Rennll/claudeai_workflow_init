@@ -9,6 +9,7 @@ Before implementing:
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
+- At technical forks, present the tradeoff and ask before proceeding.
 
 ## 2. Simplicity First
 **Minimum code that solves the problem. Nothing speculative.**
@@ -43,6 +44,8 @@ For multi-step tasks, state a brief plan:
 2. [Step] → verify: [check]
 3. [Step] → verify: [check]
 ```
+When direction is clear, proceed. Stop only when user input is needed or the next step has multiple valid paths.
+
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
 ---
