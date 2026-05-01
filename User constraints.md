@@ -7,7 +7,7 @@
 - 不使用 Claude 桌面版、本機 AI agent
 
 ## 本機環境
-- Windows 10 + PowerShell 7
+- Windows 10 + PowerShell 7，需要注意cp950 是繁體中文 Windows 的預設編碼，考慮輸入輸出都用 UTF-8
 - Git 已安裝，用於版本管理與同步，不使用分支
 - 成果需手動複製下載或透過 GitHub 網頁操作
 - Python：工作場所 3.10、自用筆電 3.11
