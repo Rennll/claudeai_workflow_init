@@ -21,6 +21,8 @@ Before implementing:
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
+Prefer pure functions. Collect all IO in main.
+
 ## 3. Surgical Changes
 **Touch only what you must.**
 - Don't "improve" adjacent code, comments, or formatting.
@@ -47,6 +49,11 @@ For multi-step tasks, state a brief plan:
 When direction is clear, proceed. Stop only when user input is needed or the next step has multiple valid paths.
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## 5. Error Handling
+**Catch precisely. Validate at the boundary.**
+- Wrap only one operation per try/except — one API call, one file read, one type conversion. If you can't state "this try is protecting X", the scope is too wide.
+- Validate API responses at the entry point — check for missing fields before data flows into downstream logic. Don't let bad data propagate silently.
 
 ---
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
