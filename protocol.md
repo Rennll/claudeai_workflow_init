@@ -27,4 +27,4 @@
 
 ## 互動偏好
 - 輸出程式碼時預設用程式碼區塊。僅在需要於容器內執行或測試時才建立檔案，並說明原因。
-- commit message 由 AI 根據本次 log 產出
+- commit message 由 AI 根據本次 session log 產出，格式為 git add . && git commit -m "..."
