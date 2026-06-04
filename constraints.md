@@ -5,15 +5,55 @@
 - 有 Claude Project 功能，上限 5 個
 
 ## 本機環境
-- Windows 10，本機使用 PowerShell 7工作場所使用Powershell 5.1，預設編碼 cp950，輸入輸出一律使用 UTF-8
-- Python：工作場所 3.10，使用pvenv-win。自用筆電 3.11，使用uv
+- Windows 10
+- PowerShell：工作場所 5.1，自用筆電 7，預設編碼 cp950，輸入輸出一律使用 UTF-8
+- Python：工作場所 3.10（pvenv-win），自用筆電 3.11（uv）
 - Node.js 24：僅自用筆電
 - 工作場所不額外安裝軟體，方案需在現有環境內解決
 
 ## 開發架構
 - 開發在雲端（claude.ai session）：產出程式碼、在容器內執行與測試
 - 部署在本機：運行最終成果
-- Git 用於版本管理
+- 同步機制：GitHub REST API（Contents API），不使用 Git push 或 Google Drive
+
+## Handoff 系統
+
+### SYSTEM CONSTRAINTS 範本
+```
+【SYSTEM CONSTRAINTS】
+- 語系與術語：一律使用繁體中文（台灣習慣用語，如：軟體、資訊、演算法）。
+- 互動協定：開場首輪先執行任務確認，用一句話說明交付目標與完成條件，確認後才開始產出。
+- 技術邊界：Win10 / PS 5.1（工作）/ PS 7（自用）/ Python 3.10（工作）/ 3.11（自用）/ 檔案讀寫一律強制指定 UTF-8 編碼。
+```
+
+### Handoff 格式
+- 完整（完整專案）：依照 bootstrap.md 的 handoff.md 格式
+- 輕量（簡單跨 session）：按下面格式呈現。
+
+```
+[專案名] #[由產出的 AI 填寫本次 session 的簡短標題]
+=========================================
+PROJECT: [專案名]
+=========================================
+【SYSTEM CONSTRAINTS】
+[貼上 constraints_base.md 內容]
+=========================================
+
+### 當前狀態快照 (Status)
+- **當前核心進度**：
+
+### 關鍵決策與限制 (Key Context)
+- **已確認/已完成**：
+- **放棄/行不通**：
+
+### 下一步與交付目標 (Next Steps)
+1. [任務] ── [原因] -> 預期交付：[完成條件]
+```
+
+### 讀取行為
+- 讀取快捷鍵：合併 `_shared/constraints_base.md` + 當前專案 `handoff.md` → 複製到剪貼簿
+- 存檔快捷鍵：剪貼簿內容覆蓋當前專案 `handoff.md` → 同步上傳 GitHub
+- 當前專案以常駐設定切換，不自動判斷
 
 ## 階段偵測與升級
 
@@ -26,11 +66,7 @@
 ### 偵測與提示規則
 - 探索→成形：偵測到「方向確定、開始討論實作」時，詢問是否需要帶入 constraints.md
 - 任何階段結束時：偵測到「這個 session 有後續」，主動產出 handoff
-- 成形或跨 session→完整專案：偵測到「複雜度高、會持續迭代」，提示是否建立 project.md 與 Claude Project
-
-### Handoff 格式
-- **輕量**（簡單跨 session）：背景概論、關鍵決策、下一步，格式不固定
-- **完整**（完整專案）：依照 bootstrap.md 的 handoff.md 格式
+- 成形或跨 session→完整專案：偵測到「複雜度高、會持續迭代」，提示是否建立 project.md
 
 ### Context Window 管理
 當對話累積到一定長度、或話題告一段落時，主動提示是否需要 wrap-up 並產出 handoff。
@@ -38,7 +74,8 @@
 ## 設定維護
 
 ### 剪枝規則
-使用者主動要求時，掃描 protocol.md 與 constraints.md：
+使用者主動要求時：
 - 找出重複或互相矛盾的規則
 - 找出從未被觸發過的規則
 - 合併或刪除，產出草稿後等使用者確認
+```
