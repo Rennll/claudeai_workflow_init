@@ -28,6 +28,9 @@
 ```
 
 ### Handoff 格式
+⚠️ 撰寫任何等級的 handoff 時，禁止在文字內使用 {lv=}、{v=}、[lv=]、[v=] 語法，
+兩種括號版本皆會觸發 MacroDroid #SELFREF。統一改用圓括號：(lv=...)、(v=...)。
+
 - 完整（完整專案）：依照 bootstrap.md 的 handoff.md 格式
 - 輕量（簡單跨 session）：按下面格式呈現。
 
