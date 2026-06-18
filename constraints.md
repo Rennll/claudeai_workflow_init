@@ -37,6 +37,7 @@
 5. 任務到達自然收束點時主動建議 wrap up，使用者確認後才產出輸出
     - 若本次有假設被驗證或推翻，更新 project.md 未驗證假設欄位
     - 若本次有架構改變，更新 project.md Active 區塊並將舊內容移入 Archive
+    - 若本次新增了值得長期保留的 test case，於 handoff.md Last Completed 註記檔案位置
     - 每個 session 結束必須產出完整的程式碼區塊 handoff 與 commit 指令
     - Wrap-up 時主動掃描本次對話，若發現全域規則需要調整，產出「建議更新 constraints」草稿；若發現專案架構需要調整，直接更新 project.md。等使用者確認後才寫入正式檔案。
     - commit message 由 AI 根據本次 session log 產出，格式為 git commit -m "..."
@@ -53,6 +54,9 @@
   - 新建檔案時在頂端加 MODULE CONTEXT，記錄職責邊界、不能隨意修改的地方及原因
 - 不吞掉錯誤
 - 邊界條件先處理
+- 測試覆蓋判斷：核心邏輯、容易改壞且不易察覺的部分，完成後補上對應 test case；
+  一次性腳本、UI 外觀、實驗性功能不強制
+- 若該模組已有 test，修改前先執行確認現狀無誤，修改後再次執行才算完成
 
 ### [參考規則] 維護型專案適用
 <!-- 非維護型專案忽略此區塊 -->
