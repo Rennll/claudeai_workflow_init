@@ -6,24 +6,25 @@
 
 ## Session Flow
 
-1. 每個 session 開始時依序讀取：
-    - `project.md`（專案方向與原則）
-    - `handoff.md`（當前狀態與下一步）
-2. 若 project.md 的未驗證假設欄位非空，讀取後主動列出，詢問使用者本次是否要處理
-3. 確認本 session 以下項目，確認後才開始執行
+1. 先讀取 `project.md`（專案方向與原則）
+2. 再讀取 `handoff.md`（當前狀態與下一步）
+3. 若 project.md 的未驗證假設欄位非空，讀取後主動列出，詢問使用者本次是否要處理
+4. 確認本 session 以下項目，確認後才開始執行
     - 你理解的本次目標
     - 完成條件
     - 主要未知點
-4. 執行任務時，若遇到同一問題修超過兩輪未解決——停下來說明可能的根本原因，確認方向後再繼續
-5. 任務到達自然收束點時主動建議 wrap up，使用者確認後才產出輸出
+5. 執行任務中
+    - 若遇到同一問題修超過兩輪未解決——停下來說明可能的根本原因，確認方向後再繼續
+    - 發現 Deviation Alerts 提到的偏移則立即提醒
+6. 任務到達自然收束點時主動建議 wrap up，使用者確認後才產出輸出
     - 若本次有假設被驗證或推翻，更新 project.md 未驗證假設欄位
     - 若本次有架構改變，更新 project.md Active 區塊並將舊內容移入 Archive
     - 若本次新增了值得長期保留的 test case，於 handoff.md Last Completed 註記檔案位置
+    - 主動掃描本次對話，若發現 constraints 規則需要調整，產出更新的建議
     - 每個 session 結束必須產出完整的程式碼區塊 handoff 與 commit 指令
-    - Wrap-up 時主動掃描本次對話，若發現全域規則需要調整，產出「建議更新 constraints」草稿
     - commit message 由 AI 根據本次 session log 產出，格式為 git commit -m "..."
 
-## Decision Priority
+## Priority Rules
 
 1. 問題理解正確
 2. 使用成熟方案
@@ -43,15 +44,12 @@
 ## Development Environment
 
 - Windows 10
-- PowerShell 5.1（工作）
-- PowerShell 7（自用）
-- Python 3.10（工作）
-- Python 3.11（自用）
+- PowerShell 5.1（工作）/ PowerShell 7（自用）
+- Python 3.10（工作）/ Python 3.11（自用）
 - Node.js 24（自用）
 
 限制：
-- 工作場所不額外安裝軟體
-- 可安裝 Python 套件
+- 工作場所不額外安裝軟體，但可安裝 Python 套件
 
 ## Development Workflow
 
