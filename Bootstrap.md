@@ -49,7 +49,6 @@
 - 問題定義：
 - 成功定義：
 - 未驗證假設：（實作中逐條刪除或移入 Archive）
-- Current Phase：（Exploration / Stabilization / Maintenance）
 - 需求來源：
 
 ## [Active] Architecture
