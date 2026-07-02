@@ -65,9 +65,7 @@
 - PowerShell 5.1（工作）/ PowerShell 7（自用）
 - Python 3.10（工作）/ Python 3.11（自用）
 - Node.js 24（自用）
-
-限制：
-- 工作場所不額外安裝軟體，但可安裝 Python 套件
+- 限制：工作場所不額外安裝軟體，但可安裝 Python 套件
 
 ## Development Workflow
 
